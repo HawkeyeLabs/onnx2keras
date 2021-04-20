@@ -28,9 +28,10 @@ def convert_gemm(node, params, layers, lambda_func, node_name, keras_name):
         raise AttributeError('More than 3 or less than 2 inputs')
 
     # Linear can have additional flag to transpose weights
-    # if 'transB' in params and params['transB'] == 1:
-    #     logger.debug('Transposing W matrix.')
-    #     keras_weights[0] = keras_weights[0].transpose()
+    if 'transB' in params and params['transB'] == 1:
+        logger.debug('Transposing W matrix.')
+        keras_weights[0] = keras_weights[0].transpose()
+        keras_weights[1] = keras_weights[1].transpose()
 
     # Estimate input/output neurons
     input_channels, output_channels = keras_weights[0].shape

@@ -184,8 +184,8 @@ def convert_reshape(node, params, layers, lambda_func, node_name, keras_name):
 
                 if len(np.int32(input_1[1:])) == 1 and np.int32(input_1[1:])[0] == -1:
                     logger.debug('The first argument is Keras/tf layer. Apply keras.Flatten.')
-                    flatten = keras.layers.Flatten(name=keras_name)
-                    layers[node_name] = flatten(input_0)
+                    reshape = keras.layers.Reshape(np.int32(input_1[1:]), name=keras_name)
+                    layers[node_name] = reshape(input_0)
                 else:
                     reshape = keras.layers.Reshape(np.int32(input_1[1:]), name=keras_name)
                     layers[node_name] = reshape(input_0)

@@ -181,8 +181,7 @@ def convert_reshape(node, params, layers, lambda_func, node_name, keras_name):
                 logger.debug('The first argument is Keras/tf layer. Apply keras.Reshape.')
                 logger.debug('Target shape :')
                 logger.debug(np.int32(input_1[1:]))
-                logger.debug(np.int32(input_1))
-                logger.debug(np.int32(input_1[0]))
+                logger.debug(input_1)
 
                 if len(np.int32(input_1[1:])) == 1 and np.int32(input_1[1:])[0] == -1:
                     logger.debug('The first argument is Keras/tf layer. Apply keras.Flatten.')

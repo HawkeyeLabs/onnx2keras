@@ -29,7 +29,7 @@ def convert_gemm(node, params, layers, lambda_func, node_name, keras_name):
 
     # Linear can have additional flag to transpose weights
     if 'transB' in params and params['transB'] == 1:
-        logger.debug('Transposing W matrix and B.')
+        logger.debug('Transposing W matrix.')
         keras_weights[0] = keras_weights[0].transpose()
 
     # Estimate input/output neurons
